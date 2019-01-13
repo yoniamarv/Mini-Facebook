@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+  <title>Signup</title>
+</head>
+<body>
+
+  <form method="POST">
+    {{ signup_form.as_p }}
+    {{ extra_info_form.as_p }}
+    {% csrf_token %}
+    <input type="submit" name="signup">
+  </form>
+
+</body>
+</html>
