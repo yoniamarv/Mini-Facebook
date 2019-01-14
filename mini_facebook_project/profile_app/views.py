@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
-from profile_app.models import Profile, Gender, Picture
-from profile_app.forms import SignupForm, LoginForm, ProfileForm, UserForm, ProfileForm, ExtraInfoForm
+from profile_app.models import UserProfileInfo
+from profile_app.forms import SignupForm, LoginForm, ProfileForm, UserForm, ProfileForm
 
 
 def index(request):

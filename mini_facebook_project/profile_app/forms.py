@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from profile_app.models import Profile
+from profile_app.models import UserProfileInfo
 
 
 class SignupForm(forms.ModelForm):
@@ -79,7 +79,7 @@ class UserForm(forms.ModelForm):
 
 class ProfileForm(forms.ModelForm):
   class Meta:
-      model = Profile
+      model = UserProfileInfo
       fields = ['bio']
       widgets = {
         'bio': forms.Textarea(attrs={
@@ -92,7 +92,7 @@ class ProfileForm(forms.ModelForm):
 
 class ExtraInfoForm(forms.ModelForm):
   class Meta:
-      model = Profile
+      model = UserProfileInfo
       fields = ['picture', 'gender']
       widgets = {
         'gender': forms.Select(attrs={

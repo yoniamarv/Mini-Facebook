@@ -18,5 +18,5 @@ def index(request):
 	# if request.user.is_authenticated:
 	# 	  user = request.user
 	# products = Product.objects.all()
-	# return render(request, 'index.html', context={ 'products': products, 'user': user})
-    pass
+	return render(request, 'index.html')
+   
