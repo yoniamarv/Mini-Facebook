@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from shop_app.models import #Product, Customer, Comment, Maillot, Question, Response, CommentResponse
 # from shop_app.forms import CommentForm, QuestionForm, ResponseForm, CommentResponseForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
