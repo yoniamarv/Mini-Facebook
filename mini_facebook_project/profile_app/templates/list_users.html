@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+
+<head>
+    <title>Liste Users {{ list_user.username }}</title>
+</head>
+
+<body>
+    {% if logged_in %}
+    {% for list_user in list_users %}
+    <h3> bio {{ list_user.bio }}</h3>
+    <h3> last name {{ list_user.user.last_name }}</h3>
+    <h3> gender {{ list_user.gender }}</h3>
+    <img src="{{list_user.picture.url}}">
+    {% endfor %}
+    {% else %}
+    <p>not logged in</p>
+    {% endif %}
+</body>
+
+</html>

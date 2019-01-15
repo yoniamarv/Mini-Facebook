@@ -21,4 +21,13 @@ def home(request):
     else:
         return render(request, 'home.html', {'logged_in': False})
 
+
+def index(request):
+    if request.user.is_authenticated:
+      user = request.user 
+      user_profile_info = Profile.objects.get(user= user)
+
+      return render(request, 'index.html',{'logged_in': True, 'picture': user_profile_info.picture.url } )
+    else:
+      return render(request, 'index.html', {'logged_in': False})
    

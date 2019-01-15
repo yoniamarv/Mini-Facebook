@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from profile_app.models import Profile
-from profile_app.forms import SignupForm, LoginForm, ProfileForm, UserForm, ProfileForm
+from profile_app.forms import SignupForm, LoginForm, ProfileForm, UserForm
 
 
 def signup(request):
@@ -58,3 +58,18 @@ def logout_auth(request):
 def profile(request, user_id):
     user = User.objects.get(id=user_id)
     return render(request, 'profile.html', context={'user': user})
+
+
+def list_users(request):
+    if request.user.is_authenticated:
+        user = request.user
+        list_users = Profile.objects.all()
+
+        return render(request, 'list_users.html', {'logged_in': True,'list_users':list_users})
+    else:
+        return render(request, 'list_users.html', {'logged_in': False})
+
+
+
+
+    
