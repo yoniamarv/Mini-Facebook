@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 import datetime
 import logging
+from profile_app.models import Profile 
 
 
 def search(request,value):
@@ -11,12 +12,13 @@ def search(request,value):
 	# return render(request, 'index.html', context={'products': products})
     pass
 
-def index(request):
-	# users = User.objects.all().filter(is_superuser=False)
-	# user = None
-	
-	# if request.user.is_authenticated:
-	# 	  user = request.user
-	# products = Product.objects.all()
-	return render(request, 'index.html')
+def home(request):
+    if request.user.is_authenticated:
+        user = request.user
+        user_profile_info = Profile.objects.get(user=user)
+
+        return render(request, 'home.html', {'logged_in': True, 'picture': user_profile_info.picture.url})
+    else:
+        return render(request, 'home.html', {'logged_in': False})
+
    

@@ -1,0 +1,55 @@
+
+
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+
+<head>
+  <title>Signup</title>
+</head>
+
+<body>
+  <form enctype='multipart/form-data' method="POST">
+    {% csrf_token %}
+    {{ signup_form.as_p }}
+    {{ profile_form.as_p }}
+    <input type="submit" name="signup">
+  </form>
+</body>
+
+<link rel="stylesheet" href="{% static 'css/styles.css' %}" media="all">
+
+
+
+<header class="  blue-container container-fluid">
+    <div class="row">
+      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        <div class=" col-xs-4 col-sm-4 col-md-4 col-lg-4"></div>
+        <div class="  col-xs-8 col-sm-8 col-md-8 col-lg-8 custom-pad">
+          <h1 class="white-text"><b>facebook</b></h1>
+        </div>
+      </div>
+      <div class=" col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        <div class=" col-xs-8 col-sm-8 col-md-8 col-lg-8 ">
+          <div class="login-wrapper pull-right">
+            <form class="form-inline form">
+              <div class="form-group ">
+                <label class="white-text mail" for="email ">Email or Phone</label><br>
+                <input type="email" class=" my-input" id="email" name="email">
+              </div>
+              <div class="form-group white-text alignment">
+                <label class="white-text mail" for="pwd">Password</label><br>
+                <input class="my-input " id="pwd" name="pwd" type="password">
+              </div>
+              <button type="submit" class="btn ui-button blue-background white-text">Log In</button>
+            </form>
+            <div class="form-group my-input2">
+              <a href="#" class="text-color">Forgotten account?</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 ol-lg-4"></div>
+      </div>
+    </div>
+  </header>
+

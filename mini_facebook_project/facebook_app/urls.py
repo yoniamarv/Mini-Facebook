@@ -4,7 +4,7 @@ from . import views
 app_name = 'facebook_app'
 
 urlpatterns = [
-  path('', views.index, name='index'),
+  path('', views.home, name='home'),
   path('search/<str:value>', views.search, name='search'),
-  path('search/', views.index, name='search'),
+  path('search/', views.home, name='search'),
 ]
