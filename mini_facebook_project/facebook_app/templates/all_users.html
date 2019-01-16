@@ -21,7 +21,7 @@
                         <div class="media">
                             <div class="media-left align-self-center">
 
-                                <img class="rounded-circle" src="{{user_profile.picture.url}}">
+                                <a href="{% url 'facebook_app:profile' ###  %}"><img class="rounded-circle" src="{{user_profile.picture.url}}"></a>
                             </div>
                             <div class="media-body">
                                 <h4>Username: {{ user_profile.user.username }}</h4>
