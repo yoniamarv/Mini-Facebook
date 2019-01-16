@@ -50,7 +50,7 @@ def login_auth(request):
             login(request, user)
             return redirect('/facebook_app/')
 
-    return render(request, 'login.html', context={'login_form': LoginForm() })
+    return render(request, 'login.html', context={'login_form': LoginForm()})
 
 
 def logout_auth(request):
@@ -68,14 +68,14 @@ def list_users(request):
         user = request.user
         list_users = Profile.objects.all()
 
-        return render(request, 'list_users.html', {'logged_in': True,'list_users':list_users})
+        return render(request, 'list_users.html', {'logged_in': True, 'list_users': list_users})
     else:
         return render(request, 'list_users.html', {'logged_in': False})
 
+
 def profile(request):
-   connected_user = request.user
-   profile_connected_user = Profile.objects.get(user=connected_user)
-   followers=profile_connected_user.follows.all()
+    connected_user = request.user
+    profile_connected_user = Profile.objects.get(user=connected_user)
+    followers = profile_connected_user.follows.all()
 
-
-   return render(request, 'profile.html', context={'profile': profile,'followers':followers})
+    return render(request, 'profile.html', context={'profile': profile, 'followers': followers})
