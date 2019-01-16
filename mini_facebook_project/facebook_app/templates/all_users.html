@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+
+<head>
+    <title>Liste Users {{ list_user.username }}</title>
+    {% include "partials/header.html" %}
+</head>
+
+<body>
+      {% include "partials/navbar.html" %}
+    <section class="row-section">
+        <div class="container-fluid">
+            <div class="row">
+                <h2 class="text-center"><span>Liste de Tous les Users</span></h2>
+            </div>
+            <div class="col-md-10 offset-md-1 row-block">
+                <ul id="sortable">
+                    {% for user_profile in list_users %}
+                    <li>
+                        <div class="media">
+                            <div class="media-left align-self-center">
+
+                                <img class="rounded-circle" src="{{user_profile.picture.url}}">
+                            </div>
+                            <div class="media-body">
+                                <h4>Username: {{ user_profile.user.username }}</h4>
+                                <p>Biographie :{{ user_profile.user.bio }}</p>
+                            </div>
+                            <div class="media-right align-self-center">
+                                {% if user_profile in list_people_i_follow %}
+                                <a href="{% url 'facebook_app:unfollow' user_profile.user.id  %}" class="btn btn-default">unFollow</a>
+                                {%else%}
+                                <a href="{% url 'facebook_app:follow' user_profile.user.id  %}" class="btn btn-default">Follow</a>
+                            </div>
+                        </div>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+
+        </div>
+    </section>
+</body>
+<script>
+    $(function () {
+        $("#sortable").sortable();
+        $("#sortable").disableSelection();
+    });
+</script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
+    crossorigin="anonymous"></script>
+
+</html>

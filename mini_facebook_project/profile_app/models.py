@@ -9,4 +9,4 @@ class Profile(models.Model):
   follows = models.ManyToManyField('Profile', related_name='followed_by', symmetrical=False, blank=True)
 
   def __str__(self):
-    return (self.user.username) + '' + str(self.id) 
+    return (self.user.username) + ' ' + str(self.id) 

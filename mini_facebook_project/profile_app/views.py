@@ -45,9 +45,12 @@ def login_auth(request):
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = authenticate(request, username=username, password=password)
+
         if user is not None:
             login(request, user)
             return redirect('/facebook_app/')
+
+    return render(request, 'login.html', context={'login_form': LoginForm() })
 
 
 def logout_auth(request):
@@ -68,10 +71,3 @@ def list_users(request):
         return render(request, 'list_users.html', {'logged_in': True,'list_users':list_users})
     else:
         return render(request, 'list_users.html', {'logged_in': False})
-
-def 
-
-
-
-
-    
