@@ -71,3 +71,11 @@ def list_users(request):
         return render(request, 'list_users.html', {'logged_in': True,'list_users':list_users})
     else:
         return render(request, 'list_users.html', {'logged_in': False})
+
+def profile(request):
+   connected_user = request.user
+   profile_connected_user = Profile.objects.get(user=connected_user)
+   followers=profile_connected_user.follows.all()
+
+
+   return render(request, 'profile.html', context={'profile': profile,'followers':followers})
