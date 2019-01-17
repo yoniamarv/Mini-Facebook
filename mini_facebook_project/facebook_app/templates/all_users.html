@@ -8,7 +8,7 @@
 </head>
 
 <body>
-      {% include "partials/navbar.html" %}
+    {% include "partials/navbar.html" %}
     <section class="row-section">
         <div class="container-fluid">
             <div class="row">
@@ -21,7 +21,7 @@
                         <div class="media">
                             <div class="media-left align-self-center">
 
-                                <a href="{% url 'facebook_app:profile' ###  %}"><img class="rounded-circle" src="{{user_profile.picture.url}}"></a>
+                                <a href="#"><img class="rounded-circle" src="{{user_profile.picture.url}}"></a>
                             </div>
                             <div class="media-body">
                                 <h4>Username: {{ user_profile.user.username }}</h4>
@@ -29,9 +29,9 @@
                             </div>
                             <div class="media-right align-self-center">
                                 {% if user_profile in list_people_i_follow %}
-                                <a href="{% url 'facebook_app:unfollow' user_profile.user.id  %}" class="btn btn-default">unFollow</a>
+                                <a href="{% url 'facebook_app:unfollow' user_profile.user.id  %}" class="btn btn-primary">unFollow</a>
                                 {%else%}
-                                <a href="{% url 'facebook_app:follow' user_profile.user.id  %}" class="btn btn-default">Follow</a>
+                                <a href="{% url 'facebook_app:follow' user_profile.user.id  %}" class="btn btn-danger">Follow</a>
                             </div>
                         </div>
                     </li>

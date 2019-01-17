@@ -22,7 +22,6 @@ def home(request):
     else:
         return render(request, 'home.html', {'logged_in': False})
 
-
 def all_users(request):
     if request.user.is_authenticated:
         list_users = Profile.objects.exclude(user=request.user)

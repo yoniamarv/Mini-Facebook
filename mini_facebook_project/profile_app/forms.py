@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from profile_app.models import Profile
+from profile_app.models import Profile, Statut, Comment
 
 
 class SignupForm(forms.ModelForm):
@@ -86,5 +86,31 @@ class ProfileForm(forms.ModelForm):
                 'id': 'profile-bio',
                 'placeholder': 'Bio',
                 'required': False,
+            }),
+        }
+
+
+class StatutForm(forms.ModelForm):
+    class Meta:
+        model = Statut
+        fields = ['text', 'picture']
+        widgets = {
+            'text': forms.TextInput(attrs={
+                'id': 'statut-text',
+                'placeholder': 'write your statut',
+                'required': False,
+            }),
+        }
+
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('text', 'picture')
+        widgets = {
+            'text': forms.Textarea(attrs={
+                'id': 'comment-text',
+                'placeholder': 'Comment here...',
+                'required': True,
             }),
         }

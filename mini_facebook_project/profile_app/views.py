@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
-from profile_app.models import Profile
-from profile_app.forms import SignupForm, LoginForm, ProfileForm, UserForm
+from profile_app.models import Profile, Statut, Comment
+from datetime import datetime
+from profile_app.forms import SignupForm, LoginForm, ProfileForm, UserForm, StatutForm, CommentForm
 
 
 def signup(request):
@@ -58,11 +59,6 @@ def logout_auth(request):
     return redirect('/facebook_app/')
 
 
-def profile(request, user_id):
-    user = User.objects.get(id=user_id)
-    return render(request, 'profile.html', context={'user': user})
-
-
 def list_users(request):
     if request.user.is_authenticated:
         user = request.user
@@ -73,9 +69,25 @@ def list_users(request):
         return render(request, 'list_users.html', {'logged_in': False})
 
 
-def profile(request):
-    connected_user = request.user
-    profile_connected_user = Profile.objects.get(user=connected_user)
-    followers = profile_connected_user.follows.all()
+def profile(request, profile_id):
 
-    return render(request, 'profile.html', context={'profile': profile, 'followers': followers})
+    profile = Profile.objects.get(id=profile_id)
+    followers = profile.follows.all()
+
+    if request.method == 'POST':
+        if 'picture' in request.FILES:
+            picture = request.FILES['picture']
+
+        Statut.objects.get_or_create(
+            text=request.POST.get('text'),
+            date=datetime.now(),
+            profile=request.user.profile,
+            picture=picture
+        )
+
+    return render(request, 'profile.html', context={
+        'profile': profile,
+        'followers': followers,
+        'status': Statut.objects.all().order_by('-date'),
+        'statut_form': StatutForm(),
+    })
