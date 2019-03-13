@@ -25,7 +25,6 @@
                     <img src="{{follower.picture.url}}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">{{ follower.username }}</h5>
-                        <p class="card-text">{{ follower.bio }}</p>
                         {% if request.user.id == profile.user.id %}
                         <a href="{% url 'facebook_app:unfollow' follower.user.id  %}" class="btn btn-primary">unFollow</a>
                         {% endif %}

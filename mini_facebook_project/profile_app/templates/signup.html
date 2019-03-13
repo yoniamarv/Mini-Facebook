@@ -1,28 +1,157 @@
-<!DOCTYPE html>
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="{% static 'css/styles.css' %}" media="all">
+<!------ Include the above in your HEAD tag ---------->
+
 <html>
-	<head>
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-	    <title>Signup</title>
-	</head>
-	<body>
-		<div class="container-fluid">
-			{% include "partials/navbar.html" %}
-			<div class="row">
-				<div class="col-sm-offset-3 col-sm-6">
-					<div class="offset-3">
-						<h1>Signup</h1>
-						<form enctype='multipart/form-data' method="POST">
-								{% csrf_token %}
-								{{ signup_form.as_p }}
-								{{ profile_form.as_p }}
-							
-							<input type="submit" name="submit" value="get in touch">
-						</form>
-					</div>
-				</div>
-			</div>	
-		</div>
-		{% include "partials/footer.html" %}
 
+<body>
+    <header class="  blue-container container-fluid">
+        
+    </header>
+    <div class="bg-color">
+        <div class="container-fluid ">
+            <div class="row">
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"></div>
+                    <div class=" col-xs-8 col-sm-8 col-md-8col-lg-8 custom-pad">
+                        <h3 class="connect">Facebook helps you connect and share with the<br>
+                            people in your life.
+                        </h3>
+                        <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yc/r/GwFs3_KxNjS.png" alt="image" class="world-img text-center">
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 align">
+                    <div class="text-left ">
+                        <h1 class="heading">Create an account</h1>
+                        <p class="paragraph">It's free and always will be.</p>
+                        <form enctype='multipart/form-data' method="POST">
+                            {% csrf_token %}
+                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 column">
+                                {{ signup_form.username |as_crispy_field }}<br><br>
+								{{ signup_form.first_name |as_crispy_field }}<br><br>
+                            </div>
+                            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 column1">
+								{{ signup_form.last_name |as_crispy_field }}<br><br>
+                            </div>
+								{{ signup_form.email |as_crispy_field }}<br><br>
+                                {{ signup_form.password |as_crispy_field }}<br><br>
+                                {{ profile_form.picture |as_crispy_field }}<br><br>
+                                
+                            <div>
+                                <p class="birthday">Birthday</p>
+                                <div class="row">
+                                    <div class=" col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                        <select class="options">
+                                            <option value="day">Day</option>
+                                            <option value="day">1</option>
+                                            <option value="day">2</option>
+                                            <option value="day">3</option>
+                                            <option value="day">4</option>
+                                            <option value="day">5</option>
+                                            <option value="day">6</option>
+                                            <option value="day">7</option>
+                                            <option value="day">8</option>
+                                            <option value="day">9</option>
+                                            <option value="day">10</option>
+                                            <option value="day">11</option>
+                                            <option value="day">12</option>
+                                            <option value="day">13</option>
+                                            <option value="day">14</option>
+                                            <option value="day">15</option>
+                                            <option value="day">16</option>
+                                            <option value="day">17</option>
+                                            <option value="day">18</option>
+                                            <option value="day">19</option>
+                                            <option value="day">20</option>
+                                            <option value="day">21</option>
+                                            <option value="day">22</option>
+                                            <option value="day">23</option>
+                                            <option value="day">24</option>
+                                            <option value="day">25</option>
+                                            <option value="day">26</option>
+                                            <option value="day">27</option>
+                                            <option value="day">28</option>
+                                            <option value="day">29</option>
+                                            <option value="day">30</option>
+                                            <option value="day">31</option>
+                                        </select>
+                                        <select class="options">
+                                            <option value="month">Month</option>
+                                            <option value="Month">January</option>
+                                            <option value="Month">Febraury</option>
+                                            <option value="Month">March</option>
+                                            <option value="Month">April</option>
+                                            <option value="Month">May</option>
+                                            <option value="Month">June</option>
+                                            <option value="Month">July</option>
+                                            <option value="Month">August</option>
+                                            <option value="Month">September</option>
+                                            <option value="Month">October</option>
+                                            <option value="Month">November</option>
+                                            <option value="Month">December</option>
+                                        </select>
+                                        <select class="options">
+                                            <option value="Year">Year</option>
+                                            <option value="Year">1988</option>
+                                            <option value="Year">1989</option>
+                                            <option value="Year">1990</option>
+                                            <option value="Year">1991</option>
+                                            <option value="Year">1992</option>
+                                            <option value="Year">1993</option>
+                                            <option value="Year">1994</option>
+                                            <option value="Year">1995</option>
+                                            <option value="Year">1996</option>
+                                            <option value="Year">1997</option>
+                                            <option value="Year">1998</option>
+                                            <option value="Year">1999</option>
+                                            <option value="Year">2000</option>
+                                            <option value="Year">2001</option>
+                                            <option value="Year">2002</option>
+                                            <option value="Year">2003</option>
+                                            <option value="Year">2004</option>
+                                            <option value="Year">2005</option>
+                                            <option value="Year">2006</option>
+                                            <option value="Year">2007</option>
+                                            <option value="Year">2008</option>
+                                            <option value="Year">2009</option>
+                                            <option value="Year">2010</option>
+                                            <option value="Year">2011</option>
+                                            <option value="Year">2012</option>
+                                            <option value="Year">2013</option>
+                                            <option value="Year">2014</option>
+                                            <option value="Year">2015</option>
+                                            <option value="Year">2016</option>
+                                            <option value="Year">2017</option>
+                                            <option value="Year">2018</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 no-pad"><a href="#" class="d-o-b">why
+                                            do i need to provide my <br>date of birth?</a></div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="radio-buttons">
+                                <input type="radio" name="gender" value="Female"> Female
+                                <input type="radio" name="gender" value="Male"> Male<br>
+                                <br>
+                            </div>
+                            <p class="terms">By clicking sign up, u agree to our<a href="#"> terms,Data policy</a> and
+                                <br><a href="#">cookie policy.</a>you may recive sms notifications from us and<br> can
+                                opt out at any time</p>
+                            <br>
+                            <button type="submit" class="btn btn-success sign-up">Sign up</button>
+                        </form>
+                        <div class="celebrity"><a href="#" class="link">Create a page</a>for a celebrity,brand or
+                            buisness.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
 
-		
+</html>

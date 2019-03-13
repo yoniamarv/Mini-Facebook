@@ -27,7 +27,6 @@ def signup(request):
 
         Profile.objects.get_or_create(
             user=user,
-            bio=request.POST.get('bio'),
             picture=picture
         )
 

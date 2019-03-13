@@ -80,14 +80,8 @@ class UserForm(forms.ModelForm):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['bio', 'picture']
-        widgets = {
-            'bio': forms.Textarea(attrs={
-                'id': 'profile-bio',
-                'placeholder': 'Bio',
-                'required': False,
-            }),
-        }
+        fields = ['picture']
+        
 
 
 class StatutForm(forms.ModelForm):
